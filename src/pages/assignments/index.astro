@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Calendar } from 'lucide-react';
+
+const assignments = await getCollection('assignments');
+const sortedAssignments = assignments.sort((a, b) => a.data.dueDate.getTime() - b.data.dueDate.getTime());
+---
+
+<BaseLayout title="Feladatok - Webprogramozás">
+  <h1 class="text-2xl sm:text-3xl font-semibold text-zinc-50 mb-6 sm:mb-8">Feladatok</h1>
+
+  <div class="space-y-3 sm:space-y-4">
+    {sortedAssignments.map((assignment) => (
+      <a 
+        href={`/assignments/${assignment.slug}`}
+        class="block border border-zinc-800 p-4 sm:p-6 hover:border-zinc-700 active:border-zinc-600 transition-colors"
+      >
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-2">
+          <h2 class="text-lg sm:text-xl font-medium text-zinc-50">{assignment.data.title}</h2>
+          <time class="text-sm text-zinc-500 sm:text-right shrink-0 inline-flex items-center gap-1.5">
+            <Calendar size={14} client:load />
+            Határidő: {assignment.data.dueDate.toLocaleDateString('hu-HU', { year: 'numeric', month: 'short', day: 'numeric' })}
+          </time>
+        </div>
+        <p class="text-sm sm:text-base text-zinc-400">{assignment.data.description}</p>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

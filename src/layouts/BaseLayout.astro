@@ -1,0 +1,79 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import { Home, BookOpen, FileText, Calendar, Library } from 'lucide-react';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const pathname = new URL(Astro.request.url).pathname;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <ViewTransitions />
+</head>
+<body class="min-h-screen">
+  <nav class="border-b border-zinc-800">
+    <div class="max-w-5xl mx-auto px-4 py-3 sm:px-6 sm:py-4">
+      <ul class="flex flex-wrap gap-4 sm:gap-6 text-sm">
+        <li>
+          <a 
+            href="/" 
+            class={`inline-flex items-center gap-1.5 py-1 hover:text-zinc-50 transition-colors ${pathname === '/' ? 'text-zinc-50' : 'text-zinc-400'}`}
+          >
+            <Home size={16} client:load />
+            <span>Főoldal</span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/classes" 
+            class={`inline-flex items-center gap-1.5 py-1 hover:text-zinc-50 transition-colors ${pathname.startsWith('/classes') ? 'text-zinc-50' : 'text-zinc-400'}`}
+          >
+            <BookOpen size={16} client:load />
+            <span>Órák</span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/assignments" 
+            class={`inline-flex items-center gap-1.5 py-1 hover:text-zinc-50 transition-colors ${pathname.startsWith('/assignments') ? 'text-zinc-50' : 'text-zinc-400'}`}
+          >
+            <FileText size={16} client:load />
+            <span>Feladatok</span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/schedule" 
+            class={`inline-flex items-center gap-1.5 py-1 hover:text-zinc-50 transition-colors ${pathname === '/schedule' ? 'text-zinc-50' : 'text-zinc-400'}`}
+          >
+            <Calendar size={16} client:load />
+            <span>Órarend</span>
+          </a>
+        </li>
+        <li>
+          <a 
+            href="/resources" 
+            class={`inline-flex items-center gap-1.5 py-1 hover:text-zinc-50 transition-colors ${pathname === '/resources' ? 'text-zinc-50' : 'text-zinc-400'}`}
+          >
+            <Library size={16} client:load />
+            <span>Anyagok</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-4 py-8 sm:px-6 sm:py-12">
+    <slot />
+  </main>
+</body>
+</html>

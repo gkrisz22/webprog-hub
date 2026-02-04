@@ -1,17 +1,99 @@
 ---
-
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CardSimple from '../components/ui/CardSimple.astro';
+import { Mail } from 'lucide-react';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="Webprogramozás - 2026 Tavasz">
+  <section class="mb-12 sm:mb-16">
+    <div class="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+      <div class="flex-1">
+        <h1 class="text-3xl sm:text-4xl font-semibold text-zinc-50 mb-3">Kliensoldali webprogramozás</h1>
+        <p class="text-base sm:text-lg text-zinc-400 mb-2">2026 Tavasz</p>
+        <p class="text-zinc-300 max-w-2xl mb-6">
+          Funkcionális, akadálymentes webes felületek építése modern eszközökkel és szabványokkal.
+        </p>
+      </div>
+      
+      <div class="border border-zinc-800 p-5 sm:p-6 lg:w-80 shrink-0">
+        <h2 class="text-lg font-medium text-zinc-50 mb-4">Oktató</h2>
+        <div class="space-y-3">
+          <div>
+            <p class="text-zinc-50 font-medium">Géczy Krisztián</p>
+            <p class="text-sm text-zinc-500">Adjunktus</p>
+          </div>
+          <div class="space-y-2 text-sm">
+            <div class="flex items-center gap-2 text-zinc-400">
+              <Mail size={14} client:load />
+              <a href="mailto:mf5m7s@inf.elte.hu" class="hover:text-zinc-50 transition-colors">
+                mf5m7s@inf.elte.hu
+              </a>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-zinc-800">
+            <p class="text-xs text-zinc-500 mb-2">Óra</p>
+            <p class="text-sm text-zinc-300">Péntek 14:00 - 16:00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="mb-12 sm:mb-16">
+    <h2 class="text-xl font-medium text-zinc-50 mb-4">Gyors linkek</h2>
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <CardSimple 
+        href="/classes/week-01"
+        title="Következő óra"
+        description="1. hét: HTML alapok - Február 10, 2026"
+        iconName="clock"
+      />
+      
+      <CardSimple 
+        href="/assignments/assignment-01"
+        title="Aktuális feladat"
+        description="1. feladat: Szemantikus HTML oldal - Határidő: Február 17, 2026"
+        iconName="filecheck"
+      />
+      
+      <CardSimple 
+        href="/classes"
+        title="Összes óra"
+        description="Teljes órarend és anyagok megtekintése"
+        iconName="bookopen"
+      />
+      
+      <CardSimple 
+        href="/schedule"
+        title="Órarend"
+        description="Dátumok, határidők és vizsga információk"
+        iconName="calendar"
+      />
+      
+      <CardSimple 
+        href="https://example.com/ask"
+        title="Névtelen kérdés"
+        description="Kérdések, visszajelzések vagy aggályok"
+        iconName="messagecircle"
+      />
+    </div>
+  </section>
+
+  <section>
+    <h2 class="text-xl font-medium text-zinc-50 mb-4">Kurzusról</h2>
+    <div class="grid sm:grid-cols-3 gap-4">
+      <div class="border border-zinc-800 p-4 sm:p-5">
+        <p class="text-2xl font-semibold text-zinc-50 mb-1">13</p>
+        <p class="text-sm text-zinc-400">Hét</p>
+      </div>
+      <div class="border border-zinc-800 p-4 sm:p-5">
+        <p class="text-2xl font-semibold text-zinc-50 mb-1">5</p>
+        <p class="text-sm text-zinc-400">Feladat</p>
+      </div>
+      <div class="border border-zinc-800 p-4 sm:p-5">
+        <p class="text-2xl font-semibold text-zinc-50 mb-1">6</p>
+        <p class="text-sm text-zinc-400">Kredit</p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

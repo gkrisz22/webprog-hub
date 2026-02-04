@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { BookOpen, Wrench, GraduationCap, Accessibility } from 'lucide-react';
+---
+
+<BaseLayout title="Anyagok - Webprogramozás">
+  <h1 class="text-2xl sm:text-3xl font-semibold text-zinc-50 mb-6 sm:mb-8">Anyagok</h1>
+
+  <section class="mb-8 sm:mb-12">
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4 inline-flex items-center gap-2">
+      <BookOpen size={20} client:load />
+      <span>Dokumentáció</span>
+    </h2>
+    <ul class="space-y-3">
+      <li>
+        <a href="https://developer.mozilla.org/en-US/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          MDN Web Docs - Átfogó webfejlesztési referencia
+        </a>
+      </li>
+      <li>
+        <a href="https://html.spec.whatwg.org/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          HTML Living Standard - Hivatalos HTML specifikáció
+        </a>
+      </li>
+      <li>
+        <a href="https://www.w3.org/Style/CSS/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          CSS Specifications - Hivatalos CSS dokumentáció
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mb-8 sm:mb-12">
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4 inline-flex items-center gap-2">
+      <Wrench size={20} client:load />
+      <span>Eszközök</span>
+    </h2>
+    <ul class="space-y-3">
+      <li>
+        <a href="https://code.visualstudio.com/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          VS Code - Ajánlott kódszerkesztő
+        </a>
+      </li>
+      <li>
+        <a href="https://github.com/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          GitHub - Verziókezelés és projekt tárhely
+        </a>
+      </li>
+      <li>
+        <a href="https://validator.w3.org/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          W3C Markup Validator - HTML érvényesség ellenőrzése
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="mb-8 sm:mb-12">
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4 inline-flex items-center gap-2">
+      <GraduationCap size={20} client:load />
+      <span>Tanulás</span>
+    </h2>
+    <ul class="space-y-3">
+      <li>
+        <a href="https://web.dev/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          web.dev - Modern webfejlesztési bevált gyakorlatok
+        </a>
+      </li>
+      <li>
+        <a href="https://css-tricks.com/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          CSS-Tricks - CSS technikák és útmutatók
+        </a>
+      </li>
+      <li>
+        <a href="https://javascript.info/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          The Modern JavaScript Tutorial
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4 inline-flex items-center gap-2">
+      <Accessibility size={20} client:load />
+      <span>Akadálymentesség</span>
+    </h2>
+    <ul class="space-y-3">
+      <li>
+        <a href="https://www.w3.org/WAI/WCAG21/quickref/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          WCAG Gyors referencia
+        </a>
+      </li>
+      <li>
+        <a href="https://webaim.org/" class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+          WebAIM - Web akadálymentességi források
+        </a>
+      </li>
+    </ul>
+  </section>
+</BaseLayout>

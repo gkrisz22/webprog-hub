@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { Target, Hammer, Lightbulb, Code, AlertTriangle, Dumbbell } from 'lucide-react';
+
+export async function getStaticPaths() {
+  const classes = await getCollection('classes');
+  return classes.map((classItem) => ({
+    params: { slug: classItem.slug },
+    props: { classItem },
+  }));
+}
+
+const { classItem } = Astro.props;
+const { Content } = await classItem.render();
+---
+
+<BaseLayout title={classItem.data.title}>
+  <article class="max-w-3xl">
+    <header class="mb-8 sm:mb-12">
+      <h1 class="text-2xl sm:text-3xl font-semibold text-zinc-50 mb-2">{classItem.data.title}</h1>
+      <time class="text-zinc-500">
+        {classItem.data.date.toLocaleDateString('hu-HU', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </time>
+    </header>
+
+    <section class="mb-8 sm:mb-12">
+      <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-3 inline-flex items-center gap-2">
+        <Target size={20} client:load />
+        <span>Tanulási cél</span>
+      </h2>
+      <p class="text-zinc-300">{classItem.data.goal}</p>
+    </section>
+
+    {classItem.data.whatWeBuilt && (
+      <section class="mb-8 sm:mb-12">
+        <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-3 inline-flex items-center gap-2">
+          <Hammer size={20} client:load />
+          <span>Mit építettünk</span>
+        </h2>
+        <p class="text-zinc-300">{classItem.data.whatWeBuilt}</p>
+      </section>
+    )}
+
+    {classItem.data.keyConcepts && classItem.data.keyConcepts.length > 0 && (
+      <section class="mb-8 sm:mb-12">
+        <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-3 inline-flex items-center gap-2">
+          <Lightbulb size={20} client:load />
+          <span>Kulcsfogalmak</span>
+        </h2>
+        <ul class="space-y-2">
+          {classItem.data.keyConcepts.map((concept: string) => (
+            <li class="text-sm sm:text-base text-zinc-300 pl-4 border-l-2 border-zinc-800">{concept}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {classItem.data.codeLinks && classItem.data.codeLinks.length > 0 && (
+      <section class="mb-8 sm:mb-12">
+        <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-3 inline-flex items-center gap-2">
+          <Code size={20} client:load />
+          <span>Kód</span>
+        </h2>
+        <ul class="space-y-2">
+          {classItem.data.codeLinks.map((link: { label: string; url: string }) => (
+            <li>
+              <a href={link.url} class="text-sm sm:text-base text-zinc-400 hover:text-zinc-50 transition-colors">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {classItem.data.commonMistakes && classItem.data.commonMistakes.length > 0 && (
+      <section class="mb-8 sm:mb-12">
+        <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-3 inline-flex items-center gap-2">
+          <AlertTriangle size={20} client:load />
+          <span>Gyakori hibák</span>
+        </h2>
+        <ul class="space-y-3">
+          {classItem.data.commonMistakes.map((mistake: string) => (
+            <li class="text-sm sm:text-base text-zinc-300 pl-4 border-l-2 border-zinc-800">{mistake}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {classItem.data.practice && (
+      <section class="mb-8 sm:mb-12">
+        <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-3 inline-flex items-center gap-2">
+          <Dumbbell size={20} client:load />
+          <span>Gyakorlás (opcionális)</span>
+        </h2>
+        <p class="text-zinc-300">{classItem.data.practice}</p>
+      </section>
+    )}
+
+    <div class="prose prose-invert prose-zinc max-w-none">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Calendar, Clock } from 'lucide-react';
+---
+
+<BaseLayout title="Órarend - Webprogramozás">
+  <h1 class="text-2xl sm:text-3xl font-semibold text-zinc-50 mb-6 sm:mb-8">Órarend</h1>
+
+  <section class="mb-8 sm:mb-12">
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4 inline-flex items-center gap-2">
+      <Clock size={20} client:load />
+      <span>Kurzus áttekintés</span>
+    </h2>
+    <p class="text-sm sm:text-base text-zinc-400 mb-4">2026 Tavasz - Hétfő és Szerda, 14:00 - 15:30</p>
+  </section>
+
+  <section class="mb-8 sm:mb-12">
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4 inline-flex items-center gap-2">
+      <Calendar size={20} client:load />
+      <span>Fontos dátumok</span>
+    </h2>
+    <ul class="space-y-3">
+      <li class="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-zinc-800 pb-3">
+        <span class="text-sm sm:text-base text-zinc-300">Első óra</span>
+        <span class="text-sm text-zinc-400">2026. február 10.</span>
+      </li>
+      <li class="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-zinc-800 pb-3">
+        <span class="text-sm sm:text-base text-zinc-300">Félévi vizsga</span>
+        <span class="text-sm text-zinc-400">2026. március 24.</span>
+      </li>
+      <li class="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-zinc-800 pb-3">
+        <span class="text-sm sm:text-base text-zinc-300">Záró projekt leadás</span>
+        <span class="text-sm text-zinc-400">2026. május 12.</span>
+      </li>
+      <li class="flex flex-col sm:flex-row sm:justify-between gap-1 border-b border-zinc-800 pb-3">
+        <span class="text-sm sm:text-base text-zinc-300">Utolsó óra</span>
+        <span class="text-sm text-zinc-400">2026. május 19.</span>
+      </li>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="text-lg sm:text-xl font-medium text-zinc-50 mb-4">Heti struktúra</h2>
+    <ul class="space-y-3">
+      <li class="text-sm sm:text-base text-zinc-300 pl-4 border-l-2 border-zinc-800">
+        Hétfő: Új téma bemutatása és élő kódolás
+      </li>
+      <li class="text-sm sm:text-base text-zinc-300 pl-4 border-l-2 border-zinc-800">
+        Szerda: Gyakorlás, áttekintés és kérdések
+      </li>
+      <li class="text-sm sm:text-base text-zinc-300 pl-4 border-l-2 border-zinc-800">
+        Feladat leadása: következő hétfő 23:59-ig
+      </li>
+    </ul>
+  </section>
+</BaseLayout>
